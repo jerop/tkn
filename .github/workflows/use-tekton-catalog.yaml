@@ -1,0 +1,31 @@
+name: Use Tekton Catalog
+on:
+  workflow_dispatch:
+jobs:
+  test-tekton-pipelines:
+    name: Use Tekton Catalog
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: engineerd/setup-kind@v0.5.0
+
+      - run: export KUBECONFIG="$(kind get kubeconfig-path)"
+
+      - run: kubectl apply --filename https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
+
+      - uses: jerop/tkn@v0.1.0
+
+      - run: tkn hub install task git-clone
+      - run: tkn task describe git-clone
+      - run: |
+          tkn task start git-clone --showlog \
+            -p url=https://github.com/tektoncd/pipeline \
+            -w name=output,volumeClaimTemplateFile=tekton/workspace.yaml
+
+      - run: tkn hub install task black
+      - run: tkn task describe black
+#      - run: |
+#          tkn task start black --showlog \
+#            -p args="." \
+#            -w name=shared-workspace,claimName=pvc

@@ -1,0 +1,27 @@
+name: Test Action
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+  
+jobs:
+  test-action:
+    name: Test Action
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # Latest release
+      - uses: jerop/tkn@v0.1.0
+      - run: tkn version | grep 0.18.0
+
+      # Previous release
+      - uses: jerop/tkn@v0.1.0
+        with:
+          version: v0.16.0
+      - name: Check installed version
+        run: tkn version | grep 0.16.0
+        
