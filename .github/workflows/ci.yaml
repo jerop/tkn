@@ -1,0 +1,31 @@
+
+name: Test Action
+
+on:
+#   push:
+#     branches: [ main ]
+#   pull_request:
+#     branches: [ main ]
+  workflow_dispatch:
+  
+jobs:
+  test-action:
+    name: Test Action
+    strategy:
+      matrix:
+        platform: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.platform }}
+
+    steps:
+
+      # Latest release
+      - uses: jerop/tkn@v0.1.0
+      - run: tkn version | grep v0.18.0
+
+      # Previous release
+      - uses: jerop/tkn@v0.1.0
+        with:
+          version: v0.16.0
+      - name: Check installed version
+        run: ko version | grep 0.16.0
+        
