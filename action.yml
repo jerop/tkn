@@ -1,0 +1,32 @@
+name: 'Install tkn'
+description: 'Install Tekton CLI'
+branding:
+  icon: 'terminal'
+  color: 'purple'
+inputs:
+  version:
+    description: 'Version of tkn to install (latest, v0.18.0, etc.)'
+    required: false
+    default: 'v0.18.0'  
+runs:
+  using: "composite"
+  steps:
+  - shell: bash
+    run: |
+      # Get the version, which defaults to latest release
+      tag="${{ inputs.version }}"
+      
+      # Get the operating system
+      os=${{ runner.os }}
+      if [[ $os == "macOS" ]]; then
+        os="Darwin"
+      fi
+      
+      echo "Installing tkn@${tag} for ${os}"
+      
+      # Get the tar.xz
+      curl -LO https://github.com/tektoncd/cli/releases/download/${tag}/tkn_${tag:1}_${os}_x86_64.tar.gz
+      
+      # Extract tkn to your PATH (e.g. /usr/local/bin)
+      sudo tar xvzf tkn_${tag:1}_${os}_x86_64.tar.gz -C /usr/local/bin/ tkn
+      
