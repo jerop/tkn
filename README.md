@@ -7,7 +7,7 @@ Tekton is a powerful yet flexible Kubernetes-native open-source framework for cr
 delivery (CI/CD) systems. It lets users build, test, and deploy across multiple cloud providers or on-premises systems 
 by abstracting away the underlying implementation details.
 
-### Prerequisites
+## Prerequisites
 
 Connect to your Kubernetes Cluster or configure it using Kubernetes in Docker
 
