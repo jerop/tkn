@@ -29,7 +29,7 @@ Install Tekton Pipelines
 - uses: jerop/tkn@v0.1.0
 ```
 
-## Select `tkn` version
+## Version
 
 `jerop/tkn` installs the latest version of `tkn` by default - use `version` to select a specific version of `tkn`
 
