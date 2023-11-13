@@ -9,16 +9,14 @@ by abstracting away the underlying implementation details.
 
 ## Prerequisites
 
-Connect to your Kubernetes Cluster or configure it using Kubernetes in Docker
+Connect to your Kubernetes cluster:
+- ([GCP](https://github.com/google-github-actions/auth)
+- [AWS](https://github.com/aws-actions/configure-aws-credentials))
+
+Or configure a Kubernetes cluster using KinD:
 
 ```yaml
 - uses: engineerd/setup-kind@v0.5.0
-```
-
-Install Tekton Pipelines 
-
-```yaml
-- run: kubectl apply --filename https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
 ```
 
 ## Usage
@@ -42,4 +40,3 @@ Install Tekton Pipelines
 ## Demo
 
 Use of Tekton and GitHub Actions is demonstrated in https://github.com/jerop/demo-tkn
-
