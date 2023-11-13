@@ -1,11 +1,11 @@
-name: 'Install tkn'
-description: 'Install Tekton CLI'
+name: 'Setup tkn'
+description: 'Setup Tekton CLI'
 branding:
   icon: 'terminal'
   color: 'purple'
 inputs:
   version:
-    description: 'Version of tkn to install (latest, v0.18.0, etc.)'
+    description: 'Version of tkn to set up (latest, v0.18.0, etc.)'
     required: false
     default: 'latest'  
 runs:
