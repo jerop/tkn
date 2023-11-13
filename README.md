@@ -10,8 +10,8 @@ by abstracting away the underlying implementation details.
 ## Prerequisites
 
 Connect to your Kubernetes cluster:
-- ([GCP](https://github.com/google-github-actions/auth)
-- [AWS](https://github.com/aws-actions/configure-aws-credentials))
+- [GCP](https://github.com/google-github-actions/auth)
+- [AWS](https://github.com/aws-actions/configure-aws-credentials)
 
 Or configure a Kubernetes cluster using KinD:
 
